@@ -1,80 +1,91 @@
-/* STANDARD ELEMENTS */
+/**
+ * STANDARD ELEMENTS
+ *
+ * @format
+ */
 
 body {
-    background-color: #f0f8ff;
-    font-size: 14px;
-    /* Always show a vertical scrollbar */
-    overflow-y: scroll;
+  background-color: #f0f8ff;
+  font-size: 14px;
+  /* Always show a vertical scrollbar */
+  overflow-y: scroll;
 }
 
 table,
 th,
 td {
-    border: 1px solid black;
-    border-collapse: collapse;
-    padding: 5px;
-    text-align: left;
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 5px;
+  text-align: left;
 }
 
 header,
 footer {
-    border: 2px solid #456879;
-    box-sizing: border-box;
-    margin: 6px 0;
-    padding: 10px;
+  border: 2px solid #456879;
+  box-sizing: border-box;
+  margin: 6px 0;
+  padding: 10px;
 }
 
 /* FORM ELEMENTS */
 
 label,
 a.cancel {
-    display: inline-block;
-    text-align: right;
-    width: 20%;
+  display: inline-block;
+  text-align: right;
+  width: 20%;
 }
 input,
 select {
-    border: 1px solid darkslategrey;
-    color: black;
-    display: inline-block;
+  border: 1px solid darkslategrey;
+  color: black;
+  display: inline-block;
 }
 input:focus,
 select:focus {
-    outline: 2px solid darkslategrey;
+  outline: 2px solid darkslategrey;
 }
+/*Changing input text color*/
 input[type="text"],
+select {
+  background-color: grey;
+  margin: 6px 0;
+  padding: 10px;
+}
+
 input[type="password"],
 input[type="submit"],
 select {
-    background-color: lightgoldenrodyellow;
-    margin: 6px 0;
-    padding: 10px;
+  background-color: lightgoldenrodyellow;
+  margin: 6px 0;
+  padding: 10px;
 }
 input[type="submit"] {
-    background-color: lightgreen;
+  background-color: lightgreen;
 }
 input[type="submit"][value="delete"] {
-    background-color: pink;
+  background-color: pink;
 }
 input[type="radio"] {
-    height: 20px;
-    width: 20px;
-    vertical-align: bottom;
+  height: 20px;
+  width: 20px;
+  vertical-align: bottom;
 }
 
 .valid {
-    background-color: lightgreen;
+  background-color: rgb(149, 102, 149);
 }
 
 .invalid {
-    background-color: orange;
+  background-color: rgb(144, 58, 58);
 }
 
 /* HIDE/SHOW SECTIONS */
 
 pre {
-    background: white;
-    padding: 5px;
+  background: white;
+  padding: 5px;
 }
 
 /*
@@ -98,49 +109,49 @@ pre {
     - https://www.w3schools.com/cssref/sel_not.asp
 */
 .collapser {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 input.collapser {
-    position: absolute;
-    left: -1000px;
-    width: 0;
-    height: 0;
+  position: absolute;
+  left: -1000px;
+  width: 0;
+  height: 0;
 }
 input.collapser + label {
-    background: plum;
-    box-sizing: border-box;
-    cursor: pointer;
-    display: block;
-    padding: 5px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    text-align: center;
-    width: 100%;
+  background: plum;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: block;
+  padding: 5px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  text-align: center;
+  width: 100%;
 }
 input.collapser + label:active {
-    outline: 3px solid magenta;
+  outline: 3px solid magenta;
 }
 input.collapser:focus + label {
-    outline: 3px solid darkmagenta;
+  outline: 3px solid darkmagenta;
 }
 input.collapser:not(:checked) + label + * {
-    display: none;
+  display: none;
 }
 
 /* Special case to show/hide script execution reports */
 .report {
-    background: white;
-    padding: 5px;
+  background: white;
+  padding: 5px;
 }
 .report.file {
-    background: paleturquoise;
+  background: paleturquoise;
 }
 .report.message {
-    background: powderblue;
+  background: powderblue;
 }
 input#show_reports:not(:checked) + label ~ .report {
-    display: none;
+  display: none;
 }
 input#show_reports:not(:checked) + label ~ .report.always {
-    display: block;
+  display: block;
 }
