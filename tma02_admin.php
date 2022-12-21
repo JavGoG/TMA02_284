@@ -12,7 +12,7 @@ define('SAFE_TO_RUN', true);
 
 // TODO: Change these values to configure the application
 $database_table = "tt284_guests"; // name of database table to read/write
-$app_title = 'TT284 Block 2 - CRUD App (TMA02)';
+$app_title = 'zy958678 - Erehwon Guest House';
 $css_file = "tma02_admin.css"; // name of CSS file to load
 $js_file = "tma02_admin.js"; // name of JavaScript file to load
 
@@ -132,6 +132,10 @@ require "tma02_data-form.php";
 <div class="report">
     Task completed!
 </div>
+
+</body>
+
+</html>
 
 </body>
 
