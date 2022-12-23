@@ -79,6 +79,22 @@ if ($task == 'add' or $task == 'edit' or $task == 'save') {
     </p>
 
     <p>
+        <label for="booking_reference">Booking Reference:</label>
+        <input
+            type="text"
+            id="booking_reference"
+            name="booking_reference"
+            maxlength="9"
+            minlength="9"
+            value="<?php _e($data, "booking reference") ?>"
+            onchange="validate(event.target)"
+        />
+        <span id="feedback_booking_reference" class="invalid">
+            <?php _e($feedback, "booking reference") ?>
+        </span>
+    </p>
+    
+    <p>
         <label for="save">Submit:</label>
         <input type="submit" id="save" name="task" value="save" />
         <a class="cancel" href="<?php _e($url) ?>">cancel</a>
