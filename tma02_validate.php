@@ -55,13 +55,27 @@ if (!preg_match($format, $value)) {
 
 $value = $data['email'];
 // If value does NOT match the filter then it is invalid
+
+
+// Remove all illegal characters from email
+$value = filter_var($value, FILTER_SANITIZE_EMAIL);
 if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
     $feedback['email'] = 'Server feedback: Only valid email addresses are permitted';
     $valid = false;
 }
+
 // Also check the maximum length for this field as filter_var doesn't do this
-if (strlen($value) > 50) {
-    $feedback['email'] = 'Server feedback: Email must be 50 characters or less';
+// ^$ = anchors, [ABCD][0-9] = letters/numbers, {9} = 9 characters
+$value = $data['booking_reference'];
+$format = "/^[AB]{1}[BC]{1}[CD]{1}-[58]{1}[0-9]{4}$/"; 
+if (strlen($value) != 9) {
+    $feedback['booking_reference'] = 'Server feedback: Booking reference must be equal to 9 characters and the first three-letter group must be one of “ABC”, “ACD”, “BCD” The next character must be a hyphen. And the first digit may only be 5 or 8. The other digits may be any value between 0 and 9 inclusive';
+    $valid = false;
+}
+
+// If value does NOT match the format then it is invalid
+if (!preg_match($format, $value)) {
+    $feedback['booking_reference'] = 'The first three-letter group must be one of “ABC”, “ACD”, “BCD” The next character must be a hyphen. And the first digit may only be 5 or 8. The other digits may be any value between 0 and 9 inclusive';
     $valid = false;
 }
 
