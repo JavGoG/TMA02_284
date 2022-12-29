@@ -11,7 +11,7 @@ ini_set('display_errors', 1);
 define('SAFE_TO_RUN', true);
 
 // TODO: Change this value to configure the application
-$database_table = "tt284_guests"; // name of database table to create/drop
+$database_table = "tt284_zy958678"; // name of database table to create/drop
 
 // SQL to create table with appropriate fields
 // TODO: Change these columns to meet application requirements
@@ -20,7 +20,8 @@ $create_sql = "CREATE TABLE $database_table (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     firstname VARCHAR(30) NOT NULL,
     lastname VARCHAR(30) NOT NULL,
-    email VARCHAR(50) NOT NULL
+    email VARCHAR(50) NOT NULL,
+    bookingreference VARCHAR(10) NOT NULL
 )";
 
 // SQL to delete table
