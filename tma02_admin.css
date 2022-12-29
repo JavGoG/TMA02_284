@@ -74,11 +74,11 @@ input[type="radio"] {
 }
 
 .valid {
-  background-color: rgb(149, 102, 149);
+  background-color: rgb(226, 188, 226);
 }
 
 .invalid {
-  background-color: rgb(144, 58, 58);
+  background-color: rgb(245, 157, 157);
 }
 
 /* HIDE/SHOW SECTIONS */

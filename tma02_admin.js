@@ -56,6 +56,14 @@ function validate(inputElement) {
         feedback = "Only valid email addresses are permitted";
     }
 
+    // 1.iii Adding booking reference 
+    if (inputElement.id == "booking_reference") {
+        // ^$ = anchors, [a-zA-Z0-9] = letters/digits, 9 = 9 characters
+
+        pattern = /^[a-zA-Z]{3}-[0-9]{5}$/;
+        feedback = "Only valid booking references are permitted";
+    }
+
     // Check that this is an input element we know how to validate
     if (!pattern) {
         // This error may be caused by adding an input with e.g. id="boop"
@@ -89,6 +97,54 @@ function validate(inputElement) {
     }
 
     return valid;
+}
+
+function validateForm() {
+    // Start by assuming the form is valid
+    var valid = true;
+
+    // Validate each known input
+    // TODO: Change these checks according to the inputs you expect
+    valid = valid && validate(document.getElementById("firstname"));
+    valid = valid && validate(document.getElementById("lastname"));
+    valid = valid && validate(document.getElementById("email"));
+    valid = valid && validate(document.getElementById("booking_reference"));
+
+
+    // Feedback if form cannot be submitted
+    if (!valid) {
+        alert("Client message: Form data is invalid - please check and try again!");
+    }
+
+    return valid;
+}
+
+
+// Read the input value from the input element
+var value = inputElement.value;
+// Start by assuming the input is valid
+var valid = true;
+
+// Test the input value against the regular expression pattern
+if (pattern.test(value)) {
+    feedback = "Valid";
+    // Set the class attribute value of the feedback element to change its colour
+    feedbackElement.className = "valid";
+} else {
+    // Set the class attribute value of the feedback element to change its colour
+    feedbackElement.className = "invalid";
+    // The value is invalid
+    valid = false;
+}
+
+// Show the feedback message on the page
+feedbackElement.innerText = "Client feedback: " + feedback;
+if (value != "") {
+    // If there is a value, show this too
+    feedbackElement.innerText += ": " + value;
+}
+
+return valid;
 }
 
 function validateForm() {
