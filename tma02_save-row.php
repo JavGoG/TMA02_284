@@ -22,10 +22,10 @@ if (!defined('SAFE_TO_RUN')) {
 // TODO: Change SQL according to the columns you expect
 if ($id) {
     // Update existing row
-    $sql = "UPDATE $database_table SET firstname=?, lastname=?, email=? WHERE id=?";
+    $sql = "UPDATE $database_table SET firstname=?, lastname=?, email=?, bookingreference=?, WHERE id=?";
 } else {
     // Create new row
-    $sql = "INSERT INTO $database_table (firstname, lastname, email) VALUES (?,?,?)";
+    $sql = "INSERT INTO $database_table (firstname, lastname, email, bookingreference) VALUES (?,?,?,?)";
 }
 ?>
 
@@ -42,12 +42,12 @@ if (!($stmt = $database->prepare($sql))) {
 // TODO: Change bind_param() calls according to the columns you expect
 if ($id) {
     // Bind parameters for UPDATE statement ('s' for each column plus 's' for id)
-    if (!$stmt->bind_param('ssss', $data['firstname'], $data['lastname'], $data['email'], $id)) {
+    if (!$stmt->bind_param('ssss', $data['firstname'], $data['lastname'], $data['email'], $data['booking_reference'], $id)) {
         die("Error binding statement ($sql): $stmt->error");
     }
 } else {
     // Bind parameters for INSERT statement ('s' for each column)
-    if (!$stmt->bind_param('sss', $data['firstname'], $data['lastname'], $data['email'])) {
+    if (!$stmt->bind_param('ssss', $data['firstname'], $data['lastname'], $data['email'], $data['booking_reference'])) {
         die("Error binding statement ($sql): $stmt->error");
     }
 }
