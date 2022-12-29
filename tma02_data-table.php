@@ -20,9 +20,9 @@ if (!defined('SAFE_TO_RUN')) {
 
 <?php
 // TODO: Change this SQL to read the columns you expect
-$sql = "SELECT id, firstname, lastname, email";
+$sql = "SELECT id, firstname, lastname, email, bookingreference";
 $sql = $sql . " FROM $database_table";
-$sql = $sql . " WHERE firstname LIKE ? OR lastname LIKE ? OR email LIKE ?";
+$sql = $sql . " WHERE firstname LIKE ? OR lastname LIKE ? OR email LIKE ? OR bookingreference LIKE ?";
 $sql = $sql . " ORDER BY $sort $order";
 ?>
 
@@ -40,7 +40,7 @@ if (!($stmt = $database->prepare($sql))) {
 $term = '%' . $search . '%';
 
 // Bind parameters for SELECT statement ('s' for each column, $term for each column )
-if (!$stmt->bind_param('sss', $term, $term, $term)) {
+if (!$stmt->bind_param('ssss', $term, $term, $term, $term)) {
     die("Error binding statement ($sql): $stmt->error");
 }
 
@@ -74,6 +74,7 @@ if ($task == '' or $task == 'search') {
             <th>firstname</th>
             <th>lastname</th>
             <th>email</th>
+            <th>bookingreference</th>
         </tr>
     </thead>
     <tbody>
@@ -84,6 +85,8 @@ if ($task == '' or $task == 'search') {
                 <td><?php _e($row, 'firstname') ?></td>
                 <td><?php _e($row, 'lastname') ?></td>
                 <td><?php _e($row, 'email') ?></td>
+                <td><?php _e($row, 'bookingreference') ?></td>
+
                 <td>
                     <form method="POST" action="<?php _e($url); ?>">
                         <input type="hidden" name="id" value="<?php _e($row, 'id') ?>" />
